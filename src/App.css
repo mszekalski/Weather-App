@@ -65,7 +65,7 @@ img {
 }
 
 .current-location-container {
-  height: 33%;
+  height: 19%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,14 +84,16 @@ img {
 
 .weather-list {
   height: 100%;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: row;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .weather-list-container {
   width: 100%;
-  height: 33%;
+  height: auto;
   display: flex;
   flex-direction: column;
 
@@ -108,7 +110,7 @@ img {
 }
 
 .weather-form-container {
-  height: 33%;
+  height: 20%;
   width: 100%;
 
   display: flex;
@@ -126,4 +128,56 @@ img {
 .instructions {
   font-size: smaller;
   margin-top: 15px;
+}
+
+.errors-div {
+  margin-top: 5px;
+  font-size: small;
+  color: yellow;
+}
+
+.weather-input-button {
+  color: lightblue;
+  background: transparent;
+  border: 2px solid lightblue;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  padding: 2px 8px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border: 2px solid lightblue;
+  outline: 0;
+  margin-left: 10px;
+}
+
+.weather-input {
+  margin-left: 10px;
+  outline: none;
+}
+
+.weather-input-button:active {
+  background-color: lightblue;
+  color: red;
+}
+
+@media only screen and (max-width: 1000px) {
+  .weather-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /*.box {
+    margin: 15px 0;
+    width: 50%;
+    height: 500px;
+  }*/
 }

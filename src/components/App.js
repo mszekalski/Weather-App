@@ -10,11 +10,13 @@ class App extends Component {
       search: "",
       forecast: null,
       currentLocation: null,
-      celsius: false
+      celsius: false,
+      error: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTempChange = this.handleTempChange.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   handleChange(event) {
@@ -33,9 +35,13 @@ class App extends Component {
       .then(response => response.json())
       .then(json => {
         if (!json.success) {
-          console.log("Oh no!");
+          this.setState({ error: true });
         } else {
-          this.setState({ forecast: json, currentLocation: this.state.search });
+          this.setState({
+            forecast: json,
+            currentLocation: this.state.search,
+            error: false
+          });
         }
       });
   }
@@ -49,6 +55,18 @@ class App extends Component {
           Current Location: {this.state.currentLocation}
         </div>
       );
+    }
+  }
+
+  renderErrors() {
+    if (this.state.error === true) {
+      return (
+        <div className="errors-div">
+          There was something wrong with your search input
+        </div>
+      );
+    } else {
+      return;
     }
   }
 
@@ -84,14 +102,6 @@ class App extends Component {
     return (
       <div className="App">
         <div className="content-div">
-          <div className="current-location-container">
-            {this.renderCurrentLocation()}
-          </div>
-          <div className="weather-list-container">
-            <ul className="weather-list">
-              {this.state.forecast && this.renderForecast(this.state.forecast)}
-            </ul>
-          </div>
           <div className="weather-form-container">
             <div className="form-content-container">
               <form className="weather-form" onSubmit={this.handleSubmit}>
@@ -123,6 +133,15 @@ class App extends Component {
               You can search for a location by zip code, city and state (e.g New
               York, NY) or by city and country (e.g London, UK)
             </div>
+            {this.renderErrors()}
+          </div>
+          <div className="current-location-container">
+            {this.renderCurrentLocation()}
+          </div>
+          <div className="weather-list-container">
+            <ul className="weather-list">
+              {this.state.forecast && this.renderForecast(this.state.forecast)}
+            </ul>
           </div>
         </div>
       </div>
