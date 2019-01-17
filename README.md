@@ -54,3 +54,7 @@ While daunting at first I found implementing the responsive design fairly easy. 
 #### Expanded Details
 
 In the future I would like to add some additional components to my application, specifically a modal overlay so that a user could click on a day of the week and get more details about that day's weather. My design decision in making each WeatherItem a React component that contains data for itself allows me to implement this very easily.
+
+#### Backend Database
+
+I would also like to add a database in the future that would allow for saving favorite locations.
