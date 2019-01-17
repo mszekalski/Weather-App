@@ -93,19 +93,20 @@ class App extends Component {
             </ul>
           </div>
           <div className="weather-form-container">
-            <form className="weather-form" onSubmit={this.handleSubmit}>
-              <label htmlFor="location">Enter your location: </label>
-              <input
-                className="weather-input"
-                id="location"
-                type="text"
-                value={this.state.search}
-                onChange={this.handleChange}
-              />
-              <button className="weather-input-button" type="submit">
-                Submit
-              </button>
-
+            <div className="form-content-container">
+              <form className="weather-form" onSubmit={this.handleSubmit}>
+                <label htmlFor="location">Enter your location: </label>
+                <input
+                  className="weather-input"
+                  id="location"
+                  type="text"
+                  value={this.state.search}
+                  onChange={this.handleChange}
+                />
+                <button className="weather-input-button" type="submit">
+                  Submit
+                </button>
+              </form>
               <div className="slider-div">
                 <label className="switch">
                   <input
@@ -117,7 +118,11 @@ class App extends Component {
                 </label>
                 <div className="slider-text">{this.renderSliderText()}</div>
               </div>
-            </form>
+            </div>
+            <div className="instructions">
+              You can search for a location by zip code, city and state (e.g New
+              York, NY) or by city and country (e.g London, UK)
+            </div>
           </div>
         </div>
       </div>

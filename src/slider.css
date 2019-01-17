@@ -57,27 +57,11 @@ input:checked + .slider:before {
 
 .slider-div {
   display: flex;
-  margin-bottom: 1rem;
-}
-
-.channel-form-input-label {
-  margin: 0 0 0.25rem;
-  font-weight: 700;
-  line-height: 1.5;
-  font-size: 1rem;
-  text-align: left;
-  color: #2c2d30;
-  display: flex;
-}
-
-.channel-form-optional {
-  color: #717274;
-  font-weight: 400;
+  margin-left: 10px;
 }
 
 .slider-text {
   margin-left: 8px;
   line-height: 2.3;
   font-size: 1rem;
-  color: #717274;
 }

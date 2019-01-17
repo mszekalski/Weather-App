@@ -103,14 +103,27 @@ img {
   font-size: 15px;
 }
 
+.form-content-container {
+  display: flex;
+}
+
 .weather-form-container {
   height: 33%;
   width: 100%;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .weather-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.instructions {
+  font-size: smaller;
+  margin-top: 15px;
 }
