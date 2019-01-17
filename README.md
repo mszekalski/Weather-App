@@ -8,6 +8,8 @@ Git clone this repository, cd into the folder and run the following commands.
 npm run deploy
 ```
 
+This will install the necessary dependencies (npm install), and then run the server and automatically open the application.
+
 ## Overview and Structure
 
 ![](Desktop.gif)
