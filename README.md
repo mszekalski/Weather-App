@@ -22,10 +22,10 @@ For my application I chose to create a simple weather app. The third party API I
 
 ## Components
 
-I have two simple react components in my application
+I have two simple React components in my application
 
 - An encompassing "App" component
-- Each future weather forecast is also it's own component
+- Each future weather forecast is also it's own component, I call these "WeatherItems"
 
 #### App
 
@@ -37,10 +37,10 @@ The App component passes down the weather data into each WeatherItem component. 
 
 ## Thoughts and Future Development
 
+#### Responsive Design
+
+While daunting at first I found implementing the responsive design fairly easy. I used a simply media query to adjust the CSS styling and content of my application which allowed me to adjust the content appropriatly.
+
 #### Expanded Details
 
-In the future I would like to add some additional components to my application, specifically a modal overlay so that a user could click on a day of the week and get more details about that day's weather.
-
-#### Delegation of Responsiblities
-
-The biggest technical challenge in designing the two models was thoughtfully delegating responsibilities. Both the Doctor and Appointment model make an effort to encapsulate repsonsbility, although in the Appointment#not_overlapped? method I found it necessary to get information from the Doctor model.
+In the future I would like to add some additional components to my application, specifically a modal overlay so that a user could click on a day of the week and get more details about that day's weather. My design decision in making each WeatherItem a React component that contains data for itself allows me to implement this very easily.
