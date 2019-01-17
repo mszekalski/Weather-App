@@ -34,9 +34,21 @@ class App extends Component {
           console.log("Oh no!");
         } else {
           console.log(json);
-          this.setState({ forecast: json });
+          this.setState({ forecast: json, currentLocation: this.state.search });
         }
       });
+  }
+
+  renderCurrentLocation() {
+    if (this.state.currentLocation === null) {
+      return <div className="current-locatioon-div">No Location Selected</div>;
+    } else {
+      return (
+        <div className="current-locatioon-div">
+          Current Location: {this.state.currentLocation}
+        </div>
+      );
+    }
   }
 
   renderForecast(data) {
@@ -52,10 +64,14 @@ class App extends Component {
     return data.response[0].periods.map((day, index) => {
       let dayOfTheWeek = daysOfTheWeek[new Date(day.dateTimeISO).getDay()];
       if (index === 0) dayOfTheWeek = "Today";
+
       return (
         <li key={`day_${index}`} className="day-container">
           <div className="weather-content-container">
             <div className="day-name">{dayOfTheWeek}</div>
+            <div>
+              <img src={`https://cdn.aerisapi.com/wxicons/v2/${day.icon}`} />
+            </div>
             <div className="day-high">High: {day.maxTempF}</div>
             <div className="day-low">Low: {day.minTempF}</div>
             <div className="day-weather">{day.weather}</div>
@@ -69,23 +85,26 @@ class App extends Component {
     console.log(this.state);
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="content-div">
+          {this.renderCurrentLocation()}
           <div className="weather-list-container">
             <ul className="weather-list">
               {this.state.forecast && this.renderForecast(this.state.forecast)}
             </ul>
           </div>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="location">Enter your location: </label>
-            <input
-              id="location"
-              type="text"
-              value={this.state.search}
-              onChange={this.handleChange}
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </header>
+          <div className="weather-form-container">
+            <form className="weather-form" onSubmit={this.handleSubmit}>
+              <label htmlFor="location">Enter your location: </label>
+              <input
+                id="location"
+                type="text"
+                value={this.state.search}
+                onChange={this.handleChange}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
