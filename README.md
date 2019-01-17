@@ -18,40 +18,28 @@ The goals as laid out in the instructions were the following.
 - Make a call to a third party API and use the response to display some data
 - Implement a responsive design that works both on desktop and mobile
 
-For my database, I used a PostgreSQL. To see my database schema decisions, please see `db/schema.rb`. One thing of note, I chose to represent appointments with `appointment_time` and `duration` rather than `start_time` and `end_time`. I chose this to more easily enforce hour-long appointments. In addition, all columns have `null: false` constraints to enforce presence on the db.
-
-In my Appoinment model, I added four custom validations:
-
-- Validating that the appointment falls between 9AM and 5PM
-- Validating that the appointment has been created in the future and not the past
-- Validating that there are no overlapping appointments
-- Validating that the appointment is not on the weekend
-
-These model level validations, along with my database design, ensured that the data my application is taking in is of the correct type, as well as structured correctly.
+For my application I chose to create a simple weather app. The third party API I used in this application is called Aeris Weather. I chose this particular third-party because I found it easy to use, it provided well organized information, and even came with access to weather related icons.
 
 ## Components
 
-#### Doctor
+I have two simple react components in my application
 
-Of note in the Doctor model is the availbile_appointments method.
+- An encompassing "App" component
+- Each future weather forecast is also it's own component
 
-##### availible_appointments
+#### App
 
-The availible_appointments method is used to return a user friendly readout of the doctor's availbility on a certain date. The method could easily be converted to also return time ranges in an array, that could be used elsewhere to determine if an appointment overlaps with another appointment on that date.
+The App component contains the the forecast form, that calls the third party API in order to get the location data.
 
-#### Appointment
+##### WeatherItem
 
-The Appointment model has convenience methods for returning formatted and manipulated versions of the DateTime variable for use elsewhere. In these methods I relied heavily on ruby's .strftime as well as .change, to create necessary data transformations.
+The App component passes down the weather data into each WeatherItem component. This allows for easy re-rendering when new data is passed down through props.
 
 ## Thoughts and Future Development
 
 #### Expanded Details
 
-I think this is the biggest functionality I didn't address in my application. While not an issue currently, if this app went into production it's something I'd have to correct. It would involve doing some additional conversions when receiving data from the user and when returning data to the potential frontend.
-
-#### Testing
-
-There'a few minor flaws in my testing as it's currently set up. I am using hard-coded dates that will cause spec failures when run in the future. As time goes on, these tests will not act properly because the date I've chosen will eventually become the past and the appointments will no longer be valid. From my research I discovered a ruby gem called Timecop that I could use to alleviate this problem by freezing the DateTime in a test file.
+In the future I would like to add some additional components to my application, specifically a modal overlay so that a user could click on a day of the week and get more details about that day's weather.
 
 #### Delegation of Responsiblities
 

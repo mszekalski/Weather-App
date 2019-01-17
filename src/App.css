@@ -216,6 +216,10 @@ img {
     display: none;
   }
 
+  .weather-form-container {
+    height: 28%;
+  }
+
   .weather-content-container {
     height: 100%;
     width: 100%;
