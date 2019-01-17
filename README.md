@@ -12,6 +12,8 @@ bundle exec rspec
 
 ## Overview and Structure
 
+![](Desktop.gif)
+
 The goals as laid out in the instructions were the following.
 
 - Create single page application using React and Node.js
@@ -38,6 +40,8 @@ The App component passes down the weather data into each WeatherItem component. 
 ## Thoughts and Future Development
 
 #### Responsive Design
+
+![](Responsive.gif)
 
 While daunting at first I found implementing the responsive design fairly easy. I used a simply media query to adjust the CSS styling and content of my application which allowed me to adjust the content appropriatly.
 
