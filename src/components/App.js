@@ -51,8 +51,11 @@ class App extends Component {
       return <div className="current-locatioon-div">No Location Selected</div>;
     } else {
       return (
-        <div className="current-locatioon-div">
-          Current Location: {this.state.currentLocation}
+        <div className="current-location-div">
+          <div className="current-location-title">Current Location:&nbsp;</div>
+          <div className="current-location-text">
+            {this.state.currentLocation}
+          </div>
         </div>
       );
     }
