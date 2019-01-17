@@ -2,12 +2,10 @@
 
 ## How To Run
 
-Git clone this repository, navigate to the folder and run the following commands.
+Git clone this repository, cd into the folder and run the following commands.
 
 ```
-bundle install
-rails db:create
-bundle exec rspec
+npm run start
 ```
 
 ## Overview and Structure
