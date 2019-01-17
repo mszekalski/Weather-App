@@ -5,7 +5,7 @@
 Git clone this repository, cd into the folder and run the following commands.
 
 ```
-npm run start
+npm run deploy
 ```
 
 ## Overview and Structure
