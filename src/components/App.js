@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import "../App.css";
+import "../slider.css";
+import WeatherItem from "./weather_item.js";
 
 class App extends Component {
   constructor(props) {
@@ -8,11 +9,12 @@ class App extends Component {
     this.state = {
       search: "",
       forecast: null,
-      currentLocation: null
+      currentLocation: null,
+      celsius: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.renderForecast = this.renderForecast.bind(this);
+    this.handleTempChange = this.handleTempChange.bind(this);
   }
 
   handleChange(event) {
@@ -33,7 +35,6 @@ class App extends Component {
         if (!json.success) {
           console.log("Oh no!");
         } else {
-          console.log(json);
           this.setState({ forecast: json, currentLocation: this.state.search });
         }
       });
@@ -51,32 +52,29 @@ class App extends Component {
     }
   }
 
-  renderForecast(data) {
-    let daysOfTheWeek = {
-      0: "Sunday",
-      1: "Monday",
-      2: "Tuesday",
-      3: "Wednesday",
-      4: "Thursday",
-      5: "Friday",
-      6: "Saturday"
+  handleTempChange() {
+    return e => {
+      this.setState({ celsius: e.target.checked });
     };
-    return data.response[0].periods.map((day, index) => {
-      let dayOfTheWeek = daysOfTheWeek[new Date(day.dateTimeISO).getDay()];
-      if (index === 0) dayOfTheWeek = "Today";
+  }
 
+  renderSliderText() {
+    if (this.state.celsius === false) {
+      return "Fº";
+    } else {
+      return "Cº";
+    }
+  }
+
+  renderForecast(data) {
+    return data.response[0].periods.map((day, index) => {
       return (
-        <li key={`day_${index}`} className="day-container">
-          <div className="weather-content-container">
-            <div className="day-name">{dayOfTheWeek}</div>
-            <div>
-              <img src={`https://cdn.aerisapi.com/wxicons/v2/${day.icon}`} />
-            </div>
-            <div className="day-high">High: {day.maxTempF}</div>
-            <div className="day-low">Low: {day.minTempF}</div>
-            <div className="day-weather">{day.weather}</div>
-          </div>
-        </li>
+        <WeatherItem
+          key={index}
+          index={index}
+          dayInfo={day}
+          celsius={this.state.celsius}
+        />
       );
     });
   }
@@ -86,7 +84,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="content-div">
-          {this.renderCurrentLocation()}
+          <div className="current-location-container">
+            {this.renderCurrentLocation()}
+          </div>
           <div className="weather-list-container">
             <ul className="weather-list">
               {this.state.forecast && this.renderForecast(this.state.forecast)}
@@ -96,12 +96,27 @@ class App extends Component {
             <form className="weather-form" onSubmit={this.handleSubmit}>
               <label htmlFor="location">Enter your location: </label>
               <input
+                className="weather-input"
                 id="location"
                 type="text"
                 value={this.state.search}
                 onChange={this.handleChange}
               />
-              <button type="submit">Submit</button>
+              <button className="weather-input-button" type="submit">
+                Submit
+              </button>
+
+              <div className="slider-div">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={this.state.celsius}
+                    onChange={this.handleTempChange()}
+                  />
+                  <span className="slider round" />
+                </label>
+                <div className="slider-text">{this.renderSliderText()}</div>
+              </div>
             </form>
           </div>
         </div>

@@ -1,0 +1,83 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: lightblue;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  right: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+input:checked + .slider {
+  background-color: red;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px red;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(-26px);
+  -ms-transform: translateX(-26px);
+  transform: translateX(-26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.slider-div {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.channel-form-input-label {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+  font-size: 1rem;
+  text-align: left;
+  color: #2c2d30;
+  display: flex;
+}
+
+.channel-form-optional {
+  color: #717274;
+  font-weight: 400;
+}
+
+.slider-text {
+  margin-left: 8px;
+  line-height: 2.3;
+  font-size: 1rem;
+  color: #717274;
+}

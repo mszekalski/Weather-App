@@ -49,16 +49,27 @@ img {
 
 .App {
   text-align: center;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .content-div {
   background-color: #282c34;
   min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
+}
+
+.current-location-container {
+  height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
 }
 
 .day-container {
@@ -80,9 +91,12 @@ img {
 
 .weather-list-container {
   width: 100%;
+  height: 33%;
   display: flex;
   flex-direction: column;
-  height: 250px;
+
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .day-weather {
@@ -90,11 +104,12 @@ img {
 }
 
 .weather-form-container {
-  height: 100%;
+  height: 33%;
   width: 100%;
-  margin-top: 10px;
-  align-items: center;
+
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .weather-form {
