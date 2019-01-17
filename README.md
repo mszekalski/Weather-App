@@ -2,13 +2,19 @@
 
 ## How To Run
 
-Git clone this repository, cd into the folder and run the following commands.
+To run this application, run the following command to clone the repository
+
+```
+git clone https://github.com/mszekalski/Weather-App.git
+```
+
+Then, cd into the folder and run this command.
 
 ```
 npm run deploy
 ```
 
-This will install the necessary dependencies (npm install), and then run the server and automatically open the application.
+This will install the necessary dependencies (npm install), run the server and automatically open the application.
 
 ## Overview and Structure
 
