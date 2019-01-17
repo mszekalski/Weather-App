@@ -37,7 +37,7 @@ I have two simple React components in my application
 
 #### App
 
-The App component contains the the forecast form, that calls the third party API in order to get the location data.
+The App component contains the forecast form, that calls the third party API in order to get the location data.
 
 ##### WeatherItem
 
@@ -49,7 +49,7 @@ The App component passes down the weather data into each WeatherItem component. 
 
 ![](Responsive.gif)
 
-While daunting at first I found implementing the responsive design fairly easy. I used a simply media query to adjust the CSS styling and content of my application which allowed me to adjust the content appropriatly.
+While daunting at first I found implementing the responsive design fairly easy. I used a media query to adjust the CSS styling and content of my application which allowed me to adjust the content appropriatly.
 
 #### Expanded Details
 
