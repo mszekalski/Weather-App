@@ -29,7 +29,7 @@ class WeatherItem extends React.Component {
       <li className="day-container">
         <div className="weather-content-container">
           <div className="day-name">{dayOfTheWeek}</div>
-          <div>
+          <div className="img-div">
             <img
               src={`https://cdn.aerisapi.com/wxicons/v2/${
                 this.props.dayInfo.icon

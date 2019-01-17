@@ -105,7 +105,12 @@ class App extends Component {
           <div className="weather-form-container">
             <div className="form-content-container">
               <form className="weather-form" onSubmit={this.handleSubmit}>
-                <label htmlFor="location">Enter your location: </label>
+                <label className="location full-text" htmlFor="location">
+                  Enter your location:{" "}
+                </label>
+                <label className="location short-text" htmlFor="location">
+                  Location:{" "}
+                </label>
                 <input
                   className="weather-input"
                   id="location"

@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# README
 
-## Available Scripts
+## How To Run
 
-In the project directory, you can run:
+Git clone this repository, navigate to the folder and run the following commands.
 
-### `npm start`
+```
+bundle install
+rails db:create
+bundle exec rspec
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Overview and Structure
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The goals as laid out in the instructions were the following.
 
-### `npm test`
+- Create single page application using React and Node.js
+- Make a call to a third party API and use the response to display some data
+- Implement a responsive design that works both on desktop and mobile
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For my database, I used a PostgreSQL. To see my database schema decisions, please see `db/schema.rb`. One thing of note, I chose to represent appointments with `appointment_time` and `duration` rather than `start_time` and `end_time`. I chose this to more easily enforce hour-long appointments. In addition, all columns have `null: false` constraints to enforce presence on the db.
 
-### `npm run build`
+In my Appoinment model, I added four custom validations:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Validating that the appointment falls between 9AM and 5PM
+- Validating that the appointment has been created in the future and not the past
+- Validating that there are no overlapping appointments
+- Validating that the appointment is not on the weekend
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+These model level validations, along with my database design, ensured that the data my application is taking in is of the correct type, as well as structured correctly.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Components
 
-### `npm run eject`
+#### Doctor
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Of note in the Doctor model is the availbile_appointments method.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##### availible_appointments
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The availible_appointments method is used to return a user friendly readout of the doctor's availbility on a certain date. The method could easily be converted to also return time ranges in an array, that could be used elsewhere to determine if an appointment overlaps with another appointment on that date.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Appointment
 
-## Learn More
+The Appointment model has convenience methods for returning formatted and manipulated versions of the DateTime variable for use elsewhere. In these methods I relied heavily on ruby's .strftime as well as .change, to create necessary data transformations.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Thoughts and Future Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Expanded Details
 
-### Code Splitting
+I think this is the biggest functionality I didn't address in my application. While not an issue currently, if this app went into production it's something I'd have to correct. It would involve doing some additional conversions when receiving data from the user and when returning data to the potential frontend.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Testing
 
-### Analyzing the Bundle Size
+There'a few minor flaws in my testing as it's currently set up. I am using hard-coded dates that will cause spec failures when run in the future. As time goes on, these tests will not act properly because the date I've chosen will eventually become the past and the appointments will no longer be valid. From my research I discovered a ruby gem called Timecop that I could use to alleviate this problem by freezing the DateTime in a test file.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#### Delegation of Responsiblities
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The biggest technical challenge in designing the two models was thoughtfully delegating responsibilities. Both the Doctor and Appointment model make an effort to encapsulate repsonsbility, although in the Appointment#not_overlapped? method I found it necessary to get information from the Doctor model.
