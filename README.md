@@ -11,7 +11,7 @@ git clone https://github.com/mszekalski/Weather-App.git
 Then, cd into the folder and run this command.
 
 ```
-npm run dev
+npm run deploy
 ```
 
 This will install the necessary dependencies (npm install), run the server and automatically open the application.
