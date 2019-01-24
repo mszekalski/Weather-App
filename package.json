@@ -21,8 +21,8 @@
     "eject": "react-scripts eject",
     "server": "node-env-run server --exec nodemon | pino-colada",
     "dev": "run-p server start",
-    "prod": "node index.js",
-    "heroku-postbuild": "npm run prod"
+    "deploy": "npm install && npm run dev",
+    "heroku-postbuild": "npm run deploy"
   },
   "eslintConfig": {
     "extends": "react-app"
