@@ -22,7 +22,7 @@
     "server": "node-env-run server --exec nodemon | pino-colada",
     "dev": "run-p server start",
     "prod": "node index.js",
-    "heroku-postbuild": "npm install && npm run build"
+    "heroku-postbuild": "npm run prod"
   },
   "eslintConfig": {
     "extends": "react-app"
