@@ -15,12 +15,13 @@
     "express-pino-logger": "^4.0.0"
   },
   "scripts": {
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "node-env-run server --exec nodemon | pino-colada",
     "dev": "run-p server start",
-    "start": "node index.js",
+    "prod": "node index.js",
     "heroku-postbuild": "npm install && npm run build"
   },
   "eslintConfig": {
