@@ -1,8 +1,12 @@
 # README
 
-## How To Run
+## Live
 
-To run this application, run the following command to clone the repository
+http://mattski-weather-app.herokuapp.com/
+
+## How To Run Locally
+
+To run this application locally, run the following command to clone the repository
 
 ```
 git clone https://github.com/mszekalski/Weather-App.git
