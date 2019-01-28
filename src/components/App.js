@@ -25,7 +25,7 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const API_KEY = ASCzpZIb398ApFQyfdXD0kRBvJsxRAkr9PibwvhL;
+    const API_KEY = "ASCzpZIb398ApFQyfdXD0kRBvJsxRAkr9PibwvhL";
     const url = `https://api.aerisapi.com/forecasts/${encodeURIComponent(
       this.state.search
     )}?&format=json&filter=day&limit=7&client_id=tkJbjpmAGjFvVeka6qw09&client_secret=${API_KEY}`;
